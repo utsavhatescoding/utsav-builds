@@ -3,35 +3,317 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Utsav Builds creates useful digital products from Nepal, including TradePulse Nepal and TripFeed Nepal." />
-  <meta name="theme-color" content="#0d2a24" />
-  <meta property="og:title" content="Utsav Builds" />
-  <meta property="og:description" content="Useful digital products, built from Nepal." />
+  <meta name="description" content="Utsav Phuyal is an economics and business researcher building useful digital products from Nepal." />
+  <meta name="theme-color" content="#07110f" />
+  <meta property="og:title" content="Utsav Phuyal — Economics, Data & Digital Products" />
+  <meta property="og:description" content="Researching markets. Building useful products. From Nepal." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://utsavphuyal.com.np" />
-  <title>Utsav Builds — Digital Products from Nepal</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+  <title>Utsav Phuyal — Economics, Data & Digital Products</title>
+
+  <style>
+    :root {
+      --ink: #f4f0e6;
+      --muted: #a8b3ad;
+      --line: rgba(244, 240, 230, 0.13);
+      --panel: rgba(255, 255, 255, 0.055);
+      --panel-strong: rgba(255, 255, 255, 0.085);
+      --green: #9cffbf;
+      --green-strong: #57ef96;
+      --orange: #ffb270;
+      --bg: #07110f;
+      --bg-soft: #0d1c18;
+      --max: 1180px;
+      --radius: 26px;
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 85% 5%, rgba(81, 239, 150, 0.10), transparent 27rem),
+        radial-gradient(circle at 10% 40%, rgba(255, 178, 112, 0.07), transparent 28rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+      z-index: 20;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { background: var(--green); color: #07110f; }
+
+    .container { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .skip-link { position: fixed; top: 12px; left: 12px; padding: 10px 14px; background: var(--ink); color: var(--bg); transform: translateY(-150%); z-index: 100; border-radius: 99px; }
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 15;
+      padding: 18px 0;
+      transition: .3s ease;
+    }
+
+    .site-header.scrolled { padding: 10px 0; }
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 58px;
+      padding: 8px 10px 8px 14px;
+      border: 1px solid transparent;
+      border-radius: 99px;
+      transition: .3s ease;
+    }
+
+    .site-header.scrolled .nav-shell {
+      background: rgba(7, 17, 15, .72);
+      border-color: var(--line);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.2);
+    }
+
+    .brand { display: flex; gap: 11px; align-items: center; font-size: .92rem; font-weight: 700; letter-spacing: -.02em; }
+    .brand-symbol {
+      width: 34px; height: 34px; display: grid; place-items: center;
+      border: 1px solid rgba(156,255,191,.35); border-radius: 50%; color: var(--green);
+      font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: 1.25rem;
+      background: rgba(156,255,191,.06);
+    }
+
+    .site-nav { display: flex; align-items: center; gap: 6px; }
+    .site-nav a { padding: 11px 15px; border-radius: 99px; color: var(--muted); font-size: .88rem; transition: .2s ease; }
+    .site-nav a:hover { color: var(--ink); background: rgba(255,255,255,.06); }
+    .nav-cta { border: 1px solid var(--line); color: var(--ink) !important; }
+    .nav-toggle { display: none; }
+
+    .hero { min-height: 100svh; display: grid; align-items: center; padding: 150px 0 90px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(330px, .72fr); gap: clamp(40px, 7vw, 100px); align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green); text-transform: uppercase; letter-spacing: .17em; font-size: .72rem; font-weight: 700; margin: 0 0 23px; }
+    .pulse { width: 7px; height: 7px; background: var(--green-strong); border-radius: 50%; box-shadow: 0 0 0 6px rgba(87,239,150,.12); animation: pulse 2s infinite; }
+    @keyframes pulse { 50% { box-shadow: 0 0 0 11px rgba(87,239,150,0); } }
+
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 {
+      margin-bottom: 25px;
+      max-width: 900px;
+      font-family: "Iowan Old Style", "Baskerville", Georgia, serif;
+      font-size: clamp(4.2rem, 9vw, 8.4rem);
+      font-weight: 400;
+      line-height: .86;
+      letter-spacing: -.055em;
+    }
+    .hero h1 em { color: var(--green); font-weight: 400; }
+    .hero-lede { max-width: 660px; color: var(--muted); font-size: clamp(1.03rem, 1.6vw, 1.25rem); line-height: 1.65; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
+
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 20px; border-radius: 99px; font-size: .92rem; font-weight: 700;
+      border: 1px solid var(--line); transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #07110f; background: var(--green); border-color: var(--green); }
+    .button-primary:hover { background: #b7ffcf; }
+    .button-secondary { background: rgba(255,255,255,.035); }
+    .button-secondary:hover { border-color: rgba(244,240,230,.35); background: rgba(255,255,255,.07); }
+
+    .hero-side { position: relative; }
+    .portrait-shell {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      max-width: 430px;
+      margin-left: auto;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      overflow: hidden;
+      background: linear-gradient(160deg, #163328, #091511 70%);
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
+    .portrait-shell::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(7,17,15,.9), transparent 50%);
+      pointer-events: none;
+    }
+    .portrait-shell img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.86) contrast(1.04); }
+    .portrait-fallback { position: absolute; inset: 0; display: none; place-items: center; font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: 11rem; color: rgba(156,255,191,.7); }
+    .portrait-caption { position: absolute; left: 25px; right: 25px; bottom: 24px; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
+    .portrait-caption strong { display: block; font-size: 1rem; }
+    .portrait-caption span { display: block; color: rgba(244,240,230,.72); font-size: .8rem; margin-top: 5px; }
+    .location-orb { flex: 0 0 auto; width: 47px; height: 47px; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: var(--bg); font-size: 1.15rem; }
+    .floating-note {
+      position: absolute; left: -45px; top: 18%; z-index: 3; width: 175px; padding: 16px;
+      background: rgba(12,29,24,.86); border: 1px solid var(--line); border-radius: 18px; backdrop-filter: blur(14px); box-shadow: 0 20px 60px rgba(0,0,0,.25); transform: rotate(-5deg);
+    }
+    .floating-note small { color: var(--muted); text-transform: uppercase; letter-spacing: .12em; font-size: .61rem; }
+    .floating-note strong { display: block; margin-top: 8px; line-height: 1.25; }
+
+    .ticker-wrap { border-block: 1px solid var(--line); overflow: hidden; background: rgba(255,255,255,.018); }
+    .ticker { display: flex; width: max-content; animation: marquee 24s linear infinite; }
+    .ticker-group { display: flex; align-items: center; gap: 34px; padding: 17px 17px; color: var(--muted); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
+    .ticker-group b { color: var(--green); font-size: .8rem; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    .section { padding: clamp(90px, 12vw, 150px) 0; }
+    .section-head { display: grid; grid-template-columns: 1fr .55fr; gap: 50px; align-items: end; margin-bottom: 52px; }
+    .section h2 { font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: clamp(3rem, 6vw, 5.7rem); line-height: .96; letter-spacing: -.04em; font-weight: 400; margin-bottom: 0; }
+    .section-intro { color: var(--muted); line-height: 1.7; max-width: 510px; margin: 0; }
+
+    .project-list { display: grid; gap: 18px; }
+    .project-card {
+      position: relative; display: grid; grid-template-columns: 1fr .92fr; gap: 30px; min-height: 470px;
+      padding: clamp(26px, 4vw, 48px); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+      transition: transform .35s ease, border-color .35s ease, background .35s ease;
+      transform-style: preserve-3d;
+    }
+    .project-card:hover { border-color: rgba(156,255,191,.30); background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025)); }
+    .project-copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; }
+    .project-index { display: flex; align-items: center; justify-content: space-between; width: 100%; color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .15em; }
+    .project-status { padding: 8px 11px; border: 1px solid rgba(156,255,191,.22); border-radius: 99px; color: var(--green); background: rgba(156,255,191,.05); }
+    .project-kicker { margin-top: auto; color: var(--orange); text-transform: uppercase; letter-spacing: .13em; font-size: .69rem; font-weight: 700; }
+    .project-card h3 { margin-bottom: 15px; font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: clamp(2.6rem, 4vw, 4.6rem); font-weight: 400; line-height: .95; letter-spacing: -.035em; }
+    .project-copy > p:not(.project-kicker) { color: var(--muted); max-width: 530px; line-height: 1.65; }
+    .project-link { margin-top: 18px; display: inline-flex; gap: 9px; align-items: center; padding-bottom: 5px; border-bottom: 1px solid rgba(244,240,230,.24); font-weight: 700; font-size: .88rem; }
+    .project-link span { transition: transform .2s ease; }
+    .project-link:hover span { transform: translate(3px,-3px); }
+
+    .project-art { position: relative; display: grid; place-items: center; min-height: 340px; }
+    .dashboard-ui { width: min(100%, 430px); padding: 14px; border: 1px solid rgba(244,240,230,.18); border-radius: 23px; background: #101e1a; box-shadow: 0 30px 90px rgba(0,0,0,.3); transform: rotate(3deg); }
+    .ui-top { height: 32px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--line); }
+    .ui-top i { width: 7px; height: 7px; border-radius: 50%; background: rgba(244,240,230,.24); }
+    .metric-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 12px 0; }
+    .metric { padding: 12px; background: rgba(255,255,255,.045); border-radius: 12px; }
+    .metric span { display: block; width: 55%; height: 5px; background: rgba(244,240,230,.16); border-radius: 5px; }
+    .metric b { display: block; height: 13px; width: 72%; margin-top: 13px; background: var(--green); border-radius: 5px; opacity: .75; }
+    .chart { height: 185px; position: relative; border-radius: 14px; overflow: hidden; background: linear-gradient(to bottom, rgba(156,255,191,.04), transparent), repeating-linear-gradient(to bottom, transparent 0 36px, rgba(255,255,255,.055) 37px); }
+    .chart svg { position: absolute; inset: 14px 12px 12px; width: calc(100% - 24px); height: calc(100% - 26px); }
+
+    .travel-ui { width: min(100%, 390px); aspect-ratio: 4 / 5; position: relative; border-radius: 28px; overflow: hidden; border: 1px solid rgba(244,240,230,.18); background: #d9e5dc; box-shadow: 0 30px 90px rgba(0,0,0,.3); transform: rotate(-3deg); }
+    .travel-bg { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(circle at 72% 18%, rgba(255,240,178,.82) 0 7%, transparent 7.4%), linear-gradient(#9cc9c1 0 42%, #52796c 42% 61%, #173a31 61% 100%); }
+    .travel-bg::before { content: ""; position: absolute; left: -18%; right: -12%; bottom: 28%; height: 55%; background: #dce9df; clip-path: polygon(0 82%, 15% 67%, 28% 72%, 44% 30%, 54% 56%, 65% 16%, 83% 67%, 100% 48%, 100% 100%, 0 100%); filter: drop-shadow(0 10px 18px rgba(0,0,0,.12)); }
+    .travel-bg::after { content: ""; position: absolute; left: -10%; right: -10%; bottom: 0; height: 48%; background: repeating-linear-gradient(168deg, rgba(156,255,191,.15) 0 1px, transparent 1px 16px), linear-gradient(155deg, #224d40, #0d2d25); clip-path: polygon(0 38%, 14% 25%, 27% 42%, 41% 18%, 57% 46%, 74% 15%, 100% 36%, 100% 100%, 0 100%); }
+    .travel-content { position: absolute; inset: auto 22px 21px; z-index: 2; }
+    .travel-content small { color: var(--green); text-transform: uppercase; letter-spacing: .13em; }
+    .travel-content h4 { margin: 9px 0 7px; font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: 2.15rem; font-weight: 400; }
+    .travel-content p { color: rgba(244,240,230,.7); font-size: .82rem; margin: 0; }
+    .travel-badge { position: absolute; top: 18px; right: 18px; z-index: 2; padding: 9px 12px; border-radius: 99px; background: rgba(7,17,15,.66); backdrop-filter: blur(10px); font-size: .7rem; }
+
+    .about-grid { display: grid; grid-template-columns: .76fr 1.24fr; gap: clamp(40px, 8vw, 105px); align-items: start; }
+    .about-photo { position: sticky; top: 110px; border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid var(--line); background: linear-gradient(145deg, #163328, #091511); }
+    .about-photo.photo-missing::before { content: "Add your second photo"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--green); font-family: "Iowan Old Style", "Baskerville", Georgia, serif; font-size: clamp(2rem, 4vw, 4rem); text-align: center; padding: 30px; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo::after { content: "Utsav / Nepal"; position: absolute; left: 18px; bottom: 18px; padding: 8px 11px; border-radius: 99px; background: rgba(7,17,15,.68); backdrop-filter: blur(10px); font-size: .72rem; }
+    .about-copy h2 { max-width: 820px; }
+    .about-lede { margin: 31px 0 28px; font-size: clamp(1.35rem, 2.4vw, 2.15rem); line-height: 1.35; color: rgba(244,240,230,.92); }
+    .about-body { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    .about-body p { color: var(--muted); line-height: 1.75; }
+    .facts { margin-top: 35px; display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .fact { padding: 18px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.025); }
+    .fact strong { display: block; font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-weight: 400; font-size: 1.65rem; color: var(--green); }
+    .fact span { color: var(--muted); font-size: .78rem; }
+
+    .thinking-card { padding: clamp(30px, 5vw, 60px); border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(125deg, rgba(156,255,191,.08), rgba(255,255,255,.02) 45%, rgba(255,178,112,.06)); }
+    .thinking-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 50px; align-items: start; }
+    .thinking-card h2 { font-size: clamp(2.8rem, 5vw, 5rem); }
+    .questions { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .question { display: grid; grid-template-columns: 42px 1fr; gap: 17px; padding: 20px 0; border-bottom: 1px solid var(--line); color: rgba(244,240,230,.9); }
+    .question span { color: var(--green); font-size: .72rem; padding-top: 4px; }
+
+    .contact { text-align: center; padding-bottom: 80px; }
+    .contact h2 { max-width: 850px; margin-inline: auto; }
+    .contact p { color: var(--muted); margin: 24px auto 32px; max-width: 560px; line-height: 1.7; }
+    .contact .button { min-width: 180px; }
+
+    .site-footer { padding: 25px 0 38px; }
+    .footer-shell { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-top: 25px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a:hover { color: var(--ink); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .section-head, .project-card, .about-grid, .thinking-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 125px; }
+      .hero h1 { font-size: clamp(4rem, 17vw, 7rem); }
+      .hero-side { width: min(100%, 430px); margin-inline: auto; }
+      .portrait-shell { margin: 0; }
+      .floating-note { left: -15px; }
+      .project-card { min-height: 0; }
+      .project-kicker { margin-top: 55px; }
+      .project-art { order: -1; }
+      .about-photo { position: relative; top: auto; width: min(100%, 430px); }
+      .section-head { align-items: start; }
+      .section-intro { max-width: 650px; }
+    }
+
+    @media (max-width: 690px) {
+      .container { width: min(calc(100% - 24px), var(--max)); }
+      .site-header { padding: 10px 0; }
+      .nav-shell { background: rgba(7,17,15,.72); border-color: var(--line); backdrop-filter: blur(18px); }
+      .nav-toggle { width: 42px; height: 42px; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgba(255,255,255,.07); color: var(--ink); }
+      .nav-toggle::before { content: "☰"; font-size: 1.05rem; }
+      .nav-toggle[aria-expanded="true"]::before { content: "×"; font-size: 1.5rem; }
+      .site-nav { display: none; position: absolute; left: 12px; right: 12px; top: 74px; padding: 10px; flex-direction: column; align-items: stretch; background: #0b1a16; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); }
+      .site-nav.open { display: flex; }
+      .site-nav a { text-align: center; }
+      .hero { min-height: auto; }
+      .hero h1 { font-size: clamp(3.8rem, 20vw, 5.5rem); }
+      .hero-actions .button { width: 100%; }
+      .floating-note { top: 8%; left: -7px; width: 150px; }
+      .project-card { padding: 20px; }
+      .project-art { min-height: 285px; }
+      .metric-row { grid-template-columns: 1fr 1fr 1fr; }
+      .about-body, .facts { grid-template-columns: 1fr; }
+      .about-body { gap: 0; }
+      .footer-shell { align-items: flex-start; flex-direction: column; }
+      .footer-links { gap: 13px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Utsav Builds home">
-        <span class="brand-mark" aria-hidden="true">UB</span>
-        <span>Utsav Builds</span>
+  <header class="site-header" id="header">
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="Utsav Phuyal home">
+        <span class="brand-symbol">U</span>
+        <span>Utsav Phuyal</span>
       </a>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="sr-only">Toggle navigation</span>
-        <span></span><span></span><span></span>
       </button>
 
-      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-        <a href="#projects">Projects</a>
-        <a href="#approach">Approach</a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#work">Work</a>
         <a href="#about">About</a>
+        <a href="#thinking">Thinking</a>
+        <a class="nav-cta" href="#contact">Say hello ↗</a>
       </nav>
     </div>
   </header>
@@ -39,162 +321,213 @@
   <main id="main">
     <section class="hero" id="top">
       <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="dot"></span> Independent product studio · Nepal</p>
-          <h1>Building useful web apps from Nepal.</h1>
-          <p class="hero-text">
-            I turn public data, local knowledge and practical ideas into simple digital products people can actually use.
-          </p>
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="pulse"></span> Economics × Data × Digital Products</p>
+          <h1>I study markets.<br>I build <em>useful things.</em></h1>
+          <p class="hero-lede">I’m Utsav—an economics and business researcher from Nepal, turning public data, local insight and practical ideas into digital products people can actually use.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#projects">Explore projects</a>
-            <a class="button button-secondary" href="https://tradepulsenepal.streamlit.app" target="_blank" rel="noopener noreferrer">Open TradePulse <span aria-hidden="true">↗</span></a>
+            <a class="button button-primary" href="#work">See what I’m building <span>↓</span></a>
+            <a class="button button-secondary" href="#about">A little about me</a>
           </div>
         </div>
 
-        <aside class="hero-panel" aria-label="Studio summary">
-          <div class="panel-glow"></div>
-          <p class="mini-label">Currently building</p>
-          <div class="build-list">
-            <div class="build-item">
-              <span class="build-icon">TP</span>
-              <div>
-                <strong>TradePulse Nepal</strong>
-                <span>Trade intelligence platform</span>
-              </div>
-              <span class="status status-live">Live</span>
-            </div>
-            <div class="build-item">
-              <span class="build-icon">TF</span>
-              <div>
-                <strong>TripFeed Nepal</strong>
-                <span>Travel discovery platform</span>
-              </div>
-              <span class="status status-building">Building</span>
-            </div>
+        <div class="hero-side reveal">
+          <div class="floating-note">
+            <small>Current mode</small>
+            <strong>Researching.<br>Building.<br>Publishing.</strong>
           </div>
-          <div class="panel-footer">
-            <span>Data</span><span>AI</span><span>Travel</span><span>Public tools</span>
-          </div>
-        </aside>
+          <figure class="portrait-shell">
+            <!-- Replace "utsav.jpg" with your actual photo file name. -->
+            <img src="utsav.jpg" alt="Portrait of Utsav Phuyal" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="portrait-fallback" aria-hidden="true">U</div>
+            <figcaption class="portrait-caption">
+              <div>
+                <strong>Utsav Phuyal</strong>
+                <span>Based in Kathmandu, Nepal</span>
+              </div>
+              <span class="location-orb" aria-hidden="true">⌁</span>
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section class="projects section" id="projects">
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker">
+        <div class="ticker-group"><b>●</b><span>Trade intelligence</span><span>Economic research</span><span>Public data</span><span>AI tools</span><span>Nepal</span><span>Travel discovery</span></div>
+        <div class="ticker-group"><b>●</b><span>Trade intelligence</span><span>Economic research</span><span>Public data</span><span>AI tools</span><span>Nepal</span><span>Travel discovery</span></div>
+      </div>
+    </div>
+
+    <section class="section" id="work">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-head reveal">
           <div>
             <p class="eyebrow">Selected work</p>
-            <h2>Projects designed to solve real problems.</h2>
+            <h2>Ideas made tangible.</h2>
           </div>
-          <p>Each product starts with a practical question and is built to make information easier to access, understand or act on.</p>
+          <p class="section-intro">I like products that begin with a clear question, reduce friction and make difficult information feel simple.</p>
         </div>
 
-        <div class="project-grid">
-          <article class="project-card project-featured">
-            <div class="project-topline">
-              <span class="project-number">01</span>
-              <span class="status status-live">Live product</span>
-            </div>
-            <div class="project-visual trade-visual" aria-hidden="true">
-              <div class="chart-card">
-                <div class="chart-head"><span></span><span></span><span></span></div>
-                <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                <div class="line"></div>
-              </div>
-            </div>
-            <div class="project-content">
-              <p class="project-kicker">Economic data · AI insights</p>
+        <div class="project-list">
+          <article class="project-card reveal tilt-card">
+            <div class="project-copy">
+              <div class="project-index"><span>Project / 01</span><span class="project-status">Live</span></div>
+              <p class="project-kicker">Economic data · AI-assisted analysis</p>
               <h3>TradePulse Nepal</h3>
-              <p>Nepal customs data transformed into clear market intelligence, trends, opportunity signals and AI-assisted analysis.</p>
-              <div class="tags" aria-label="Technologies and topics">
-                <span>Customs data</span><span>Analytics</span><span>AI analyst</span>
+              <p>A free market-intelligence platform that transforms Nepal’s customs data into clear trends, opportunity signals and practical answers.</p>
+              <a class="project-link" href="https://tradepulsenepal.streamlit.app" target="_blank" rel="noopener noreferrer">Explore TradePulse <span>↗</span></a>
+            </div>
+            <div class="project-art" aria-hidden="true">
+              <div class="dashboard-ui">
+                <div class="ui-top"><i></i><i></i><i></i></div>
+                <div class="metric-row">
+                  <div class="metric"><span></span><b></b></div>
+                  <div class="metric"><span></span><b style="width:56%;opacity:.45"></b></div>
+                  <div class="metric"><span></span><b style="width:84%;opacity:.62"></b></div>
+                </div>
+                <div class="chart">
+                  <svg viewBox="0 0 500 200" preserveAspectRatio="none">
+                    <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9cffbf" stop-opacity=".35"/><stop offset="1" stop-color="#9cffbf" stop-opacity="0"/></linearGradient></defs>
+                    <path d="M0 155 C55 145,70 82,120 108 S210 142,260 75 S330 95,380 54 S450 68,500 28 L500 200 L0 200 Z" fill="url(#area)"/>
+                    <path d="M0 155 C55 145,70 82,120 108 S210 142,260 75 S330 95,380 54 S450 68,500 28" fill="none" stroke="#9cffbf" stroke-width="4" stroke-linecap="round"/>
+                  </svg>
+                </div>
               </div>
-              <a class="text-link" href="https://tradepulsenepal.streamlit.app" target="_blank" rel="noopener noreferrer">Open live dashboard <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="project-card">
-            <div class="project-topline">
-              <span class="project-number">02</span>
-              <span class="status status-building">In development</span>
-            </div>
-            <div class="project-visual trip-visual" aria-hidden="true">
-              <div class="phone-card">
-                <div class="phone-bar"></div>
-                <div class="mountain"><span></span></div>
-                <div class="feed-lines"><i></i><i></i><i></i></div>
-                <div class="phone-nav"><b></b><b></b><b></b></div>
-              </div>
-            </div>
-            <div class="project-content">
-              <p class="project-kicker">Travel · Community</p>
+          <article class="project-card reveal tilt-card">
+            <div class="project-copy">
+              <div class="project-index"><span>Project / 02</span><span class="project-status">Building</span></div>
+              <p class="project-kicker">Travel · Community · Local knowledge</p>
               <h3>TripFeed Nepal</h3>
-              <p>A travel discovery platform designed around real experiences, local recommendations and useful trip planning for Nepal.</p>
-              <div class="tags" aria-label="Technologies and topics">
-                <span>Discovery</span><span>Community</span><span>Nepal travel</span>
+              <p>A social travel-discovery platform built around real experiences, local recommendations and better ways to explore Nepal.</p>
+              <a class="project-link" href="https://tripfeednepal.streamlit.app" target="_blank" rel="noopener noreferrer">Visit TripFeed <span>↗</span></a>
+            </div>
+            <div class="project-art">
+              <div class="travel-ui" aria-label="Travel interface preview">
+                <div class="travel-bg"></div>
+                <span class="travel-badge">Nepal · 27.7° N</span>
+                <div class="travel-content">
+                  <small>Field note / 014</small>
+                  <h4>Find the Nepal people actually know.</h4>
+                  <p>Stories, places and recommendations from real journeys.</p>
+                </div>
               </div>
-              <a class="text-link" href="https://tripfeednepal.streamlit.app" target="_blank" rel="noopener noreferrer"> Login to TripFeed <span aria-hidden="true">↗</span></a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="approach section" id="approach">
-      <div class="container approach-grid">
-        <div>
-          <p class="eyebrow">How I build</p>
-          <h2>Simple products with a clear purpose.</h2>
-          <p class="section-copy">The goal is not to add more technology. It is to remove friction between people and the information or experience they need.</p>
-        </div>
-        <div class="principles">
-          <article>
-            <span>01</span>
-            <h3>Start with the problem</h3>
-            <p>Build around a genuine user need, not around a trendy feature.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Make complexity usable</h3>
-            <p>Turn difficult data and processes into clear, approachable tools.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Launch, learn, improve</h3>
-            <p>Ship useful versions early and improve them using real feedback.</p>
-          </article>
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <figure class="about-photo reveal">
+          <!-- Use a second photo here, or keep the same image. -->
+          <img src="utsav-about.jpg" alt="Utsav Phuyal working on research and digital products" onerror="this.style.display='none'; this.parentElement.classList.add('photo-missing');" />
+        </figure>
+
+        <div class="about-copy reveal">
+          <p class="eyebrow">About me</p>
+          <h2>Curious about why things work—and how they could work better.</h2>
+          <p class="about-lede">My background is in economics and business. My work sits where research, data, storytelling and product-building meet.</p>
+          <div class="about-body">
+            <p>I enjoy taking complex subjects—trade data, market shifts, policy questions or travel information—and making them easier to understand and use.</p>
+            <p>I’m especially interested in building useful digital tools from Nepal: products that are locally grounded, publicly valuable and simple enough to be used without a manual.</p>
+          </div>
+          <div class="facts" aria-label="Quick facts">
+            <div class="fact"><strong>2</strong><span>live digital products</span></div>
+            <div class="fact"><strong>Nepal</strong><span>home and starting point</span></div>
+            <div class="fact"><strong>∞</strong><span>questions worth exploring</span></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="about section" id="about">
-      <div class="container about-card">
-        <div class="about-mark" aria-hidden="true">U</div>
-        <div>
-          <p class="eyebrow">About</p>
-          <h2>Built independently by Utsav.</h2>
-          <p>I am an economics and business researcher building practical web products at the intersection of data, technology and everyday problems.</p>
+    <section class="section" id="thinking">
+      <div class="container">
+        <div class="thinking-card reveal">
+          <div class="thinking-grid">
+            <div>
+              <p class="eyebrow">What I’m thinking about</p>
+              <h2>Questions before features.</h2>
+            </div>
+            <div class="questions">
+              <div class="question"><span>01</span><div>How can public economic data become genuinely useful to ordinary people and businesses?</div></div>
+              <div class="question"><span>02</span><div>What would a travel platform look like if local knowledge—not advertising—shaped discovery?</div></div>
+              <div class="question"><span>03</span><div>How can small, independent products from Nepal reach a global standard without becoming generic?</div></div>
+            </div>
+          </div>
         </div>
-        <a class="button button-light" href="#projects">View the work</a>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Have an interesting problem, idea or collaboration?</h2>
+        <p>I’m always interested in thoughtful conversations around economics, data, research, technology and useful products.</p>
+        <a class="button button-primary" href="mailto:utsavkphuyal@gmail.com">Start a conversation ↗</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-wrap">
-      <div>
-        <strong>Utsav Builds</strong>
-        <p>Useful digital products, built from Nepal.</p>
+    <div class="container footer-shell">
+      <span>© <span id="year"></span> Utsav Phuyal · Built from Nepal</span>
+      <div class="footer-links">
+        <a href="https://tradepulsenepal.streamlit.app" target="_blank" rel="noopener noreferrer">TradePulse</a>
+        <a href="https://tripfeednepal.streamlit.app" target="_blank" rel="noopener noreferrer">TripFeed</a>
+        <a href="#top">Back to top ↑</a>
       </div>
-      <div class="footer-right">
-        <a href="https://tradepulsenepal.streamlit.app" target="_blank" rel="noopener noreferrer">TradePulse Nepal</a>
-        <a href="https://tripfeednepal.streamlit.app" target="_blank" rel="noopener noreferrer">Trip Feed Nepal</a>
-        <span>© <span id="year"></span> Utsav Phuyal</span>
-      </div>
-      
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const header = document.getElementById('header');
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('site-nav');
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    navToggle.addEventListener('click', () => {
+      const open = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!open));
+      nav.classList.toggle('open', !open);
+    });
+
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    if (window.matchMedia('(pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('mousemove', (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width - .5;
+          const y = (event.clientY - rect.top) / rect.height - .5;
+          card.style.transform = `perspective(1200px) rotateX(${y * -2.2}deg) rotateY(${x * 2.2}deg) translateY(-3px)`;
+        });
+        card.addEventListener('mouseleave', () => card.style.transform = '');
+      });
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
