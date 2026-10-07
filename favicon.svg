@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="18" fill="#10231f"/>
-  <text x="32" y="39" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#caed87">UB</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#f6f5f0"/><path d="M14 19V36C14 45 19 49 27 49C35 49 41 44 41 36V19H32V36C32 40 30 42 27 42C24 42 23 40 23 36V19Z" fill="#242622"/><circle cx="50" cy="44" r="5" fill="#2549ec"/></svg>

@@ -1,40 +1,40 @@
-# Utsav Builds
+# Utsav Phuyal
 
-A lightweight portfolio and product-studio website for:
+An independent portfolio for economics, research and digital products, served at **https://utsavphuyal.com.np/**.
 
-- TradePulse Nepal — live
-- TripFeed Nepal — in development
-- Future web applications
+The design uses a warm paper background, cobalt accents, editorial typography and an interactive illustration of the research → build → share process. TradePulse Nepal is the featured project, with distinct website and dashboard previews. SANGAI and GuideConnect retain their existing demo links and development statuses.
 
-## Files
+## Run locally
 
-- `index.html` — website content
-- `styles.css` — design and responsive layout
-- `script.js` — mobile navigation and current year
-- `favicon.svg` — browser icon
-- `robots.txt` and `sitemap.xml` — basic search-engine files
+No install or build step is needed. From the repository root:
 
-## Quick preview
+```sh
+python3 -m http.server 8000
+```
 
-Open `index.html` in a browser.
+Open http://localhost:8000. The site is also readable with JavaScript disabled.
 
-## Publish with GitHub Pages
+## Files and editing
 
-1. Create a public GitHub repository, for example `utsav-builds`.
-2. Upload every file from this folder to the repository root.
-3. Open repository **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select branch **main** and folder **/(root)**, then save.
-6. First confirm the temporary GitHub Pages address works. We will connect `utsavphuyal.com.np` in the next step; GitHub will then create the `CNAME` file automatically.
+- `index.html`: content, links, SEO and structured data.
+- `styles.css`: layout, typography, responsive styles and reduced-motion support.
+- `script.js`: mobile menu, process illustration, product-preview switcher, Nepal clock, section navigation and email copy.
+- `assets/`: optimized portrait images, real TradePulse product screenshots and self-hosted fonts.
+- `favicon.svg`, `preview.png`: browser icon and social sharing image.
+- `CNAME`, `robots.txt`, `sitemap.xml`: existing domain and search engine configuration.
 
-## Current external link
+TradePulse links: https://tradepulsenepal.com/ and https://app.tradepulsenepal.com/. Screenshots are static previews, not a live data feed. Update them when the product UI changes. The process illustration is decorative and does not represent financial data.
 
-TradePulse Nepal: https://tradepulsenepal.streamlit.app
+Contact: `utsavkphuyal@gmail.com`. To change it, update both `index.html` and `script.js`.
 
-## Easy edits
+## Deployment
 
-Search the files for:
+This remains a static GitHub Pages site. Merge changes into the configured Pages branch (`main`) to publish through the existing hosting setup. Preserve `CNAME` to keep the custom domain.
 
-- `Utsav Builds` to change the umbrella brand
-- `TradePulse Nepal` or `TripFeed Nepal` to update project information
-- `https://tradepulsenepal.streamlit.app` to update the live app URL
+## Accessibility
+
+Native links, buttons and disclosure controls; keyboard focus indicators; an accessible mobile menu; meaningful image alternatives; reduced-motion support; and visible content without JavaScript. Fonts and images are served locally, with no analytics or third-party scripts.
+
+## Font licenses
+
+DM Sans and DM Serif Display are distributed under the SIL Open Font License. License files are in `assets/fonts/`.

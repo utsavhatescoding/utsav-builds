@@ -1,575 +1,929 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta name="google-site-verification" content="09XQ8mhqLUNXN8VgpmZNmr68sA7B6ZgJbwtA_YEkqCw" />
-  <!-- Basic SEO -->
-<title>Utsav Labs</title>
-
-
-<meta name="description" content="Building data-driven tools for Nepal like TradePulse Nepal and TripFeed Nepal.">
-
-<meta name="keywords" content="Nepal data, trade dashboard, Nepal economy, TradePulse Nepal, Utsav Labs">
-
-<!-- Open Graph (for previews) -->
-<meta property="og:title" content="Utsav Labs">
-<meta property="og:description" content="Building data-driven tools for Nepal — TradePulse, TripFeed and more.">
-<meta property="og:image" content="https://utsavphuyal.com.np/preview.png">
-<meta property="og:url" content="https://utsavphuyal.com.np">
-<meta property="og:type" content="website">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Utsav Phuyal is an economics and business researcher building useful digital products from Nepal." />
-  <meta name="theme-color" content="#07110f" />
-  <meta property="og:title" content="Utsav Phuyal — Economics, Data & Digital Products" />
-  <meta property="og:description" content="Researching markets. Building useful products. From Nepal." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://utsavphuyal.com.np" />
-  <title>Utsav Phuyal — Economics, Data & Digital Products</title>
-
-  <style>
-    :root {
-      --ink: #f4f0e6;
-      --muted: #a8b3ad;
-      --line: rgba(244, 240, 230, 0.13);
-      --panel: rgba(255, 255, 255, 0.055);
-      --panel-strong: rgba(255, 255, 255, 0.085);
-      --green: #9cffbf;
-      --green-strong: #57ef96;
-      --orange: #ffb270;
-      --bg: #07110f;
-      --bg-soft: #0d1c18;
-      --max: 1180px;
-      --radius: 26px;
-      --shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 85% 5%, rgba(81, 239, 150, 0.10), transparent 27rem),
-        radial-gradient(circle at 10% 40%, rgba(255, 178, 112, 0.07), transparent 28rem),
-        var(--bg);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .22;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
-      z-index: 20;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    ::selection { background: var(--green); color: #07110f; }
-
-    .container { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-    .skip-link { position: fixed; top: 12px; left: 12px; padding: 10px 14px; background: var(--ink); color: var(--bg); transform: translateY(-150%); z-index: 100; border-radius: 99px; }
-    .skip-link:focus { transform: translateY(0); }
-
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 15;
-      padding: 18px 0;
-      transition: .3s ease;
-    }
-
-    .site-header.scrolled { padding: 10px 0; }
-    .nav-shell {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 58px;
-      padding: 8px 10px 8px 14px;
-      border: 1px solid transparent;
-      border-radius: 99px;
-      transition: .3s ease;
-    }
-
-    .site-header.scrolled .nav-shell {
-      background: rgba(7, 17, 15, .72);
-      border-color: var(--line);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 12px 40px rgba(0,0,0,.2);
-    }
-
-    .brand { display: flex; gap: 11px; align-items: center; font-size: .92rem; font-weight: 700; letter-spacing: -.02em; }
-    .brand-symbol {
-      width: 34px; height: 34px; display: grid; place-items: center;
-      border: 1px solid rgba(156,255,191,.35); border-radius: 50%; color: var(--green);
-      font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: 1.25rem;
-      background: rgba(156,255,191,.06);
-    }
-
-    .site-nav { display: flex; align-items: center; gap: 6px; }
-    .site-nav a { padding: 11px 15px; border-radius: 99px; color: var(--muted); font-size: .88rem; transition: .2s ease; }
-    .site-nav a:hover { color: var(--ink); background: rgba(255,255,255,.06); }
-    .nav-cta { border: 1px solid var(--line); color: var(--ink) !important; }
-    .nav-toggle { display: none; }
-
-    .hero { min-height: 100svh; display: grid; align-items: center; padding: 150px 0 90px; position: relative; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(330px, .72fr); gap: clamp(40px, 7vw, 100px); align-items: center; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green); text-transform: uppercase; letter-spacing: .17em; font-size: .72rem; font-weight: 700; margin: 0 0 23px; }
-    .pulse { width: 7px; height: 7px; background: var(--green-strong); border-radius: 50%; box-shadow: 0 0 0 6px rgba(87,239,150,.12); animation: pulse 2s infinite; }
-    @keyframes pulse { 50% { box-shadow: 0 0 0 11px rgba(87,239,150,0); } }
-
-    h1, h2, h3, p { margin-top: 0; }
-    .hero h1 {
-      margin-bottom: 25px;
-      max-width: 900px;
-      font-family: "Iowan Old Style", "Baskerville", Georgia, serif;
-      font-size: clamp(4.2rem, 9vw, 8.4rem);
-      font-weight: 400;
-      line-height: .86;
-      letter-spacing: -.055em;
-    }
-    .hero h1 em { color: var(--green); font-weight: 400; }
-    .hero-lede { max-width: 660px; color: var(--muted); font-size: clamp(1.03rem, 1.6vw, 1.25rem); line-height: 1.65; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
-
-    .button {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      min-height: 52px; padding: 0 20px; border-radius: 99px; font-size: .92rem; font-weight: 700;
-      border: 1px solid var(--line); transition: transform .2s ease, background .2s ease, border-color .2s ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary { color: #07110f; background: var(--green); border-color: var(--green); }
-    .button-primary:hover { background: #b7ffcf; }
-    .button-secondary { background: rgba(255,255,255,.035); }
-    .button-secondary:hover { border-color: rgba(244,240,230,.35); background: rgba(255,255,255,.07); }
-
-    .hero-side { position: relative; }
-    .portrait-shell {
-      position: relative;
-      aspect-ratio: 4 / 5;
-      max-width: 430px;
-      margin-left: auto;
-      border: 1px solid var(--line);
-      border-radius: 34px;
-      overflow: hidden;
-      background: linear-gradient(160deg, #163328, #091511 70%);
-      box-shadow: var(--shadow);
-      transform: rotate(2deg);
-    }
-    .portrait-shell::after {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(7,17,15,.9), transparent 50%);
-      pointer-events: none;
-    }
-    .portrait-shell img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.86) contrast(1.04); }
-    .portrait-fallback { position: absolute; inset: 0; display: none; place-items: center; font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: 11rem; color: rgba(156,255,191,.7); }
-    .portrait-caption { position: absolute; left: 25px; right: 25px; bottom: 24px; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
-    .portrait-caption strong { display: block; font-size: 1rem; }
-    .portrait-caption span { display: block; color: rgba(244,240,230,.72); font-size: .8rem; margin-top: 5px; }
-    .location-orb { flex: 0 0 auto; width: 47px; height: 47px; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: var(--bg); font-size: 1.15rem; }
-    .floating-note {
-      position: absolute; left: -45px; top: 18%; z-index: 3; width: 175px; padding: 16px;
-      background: rgba(12,29,24,.86); border: 1px solid var(--line); border-radius: 18px; backdrop-filter: blur(14px); box-shadow: 0 20px 60px rgba(0,0,0,.25); transform: rotate(-5deg);
-    }
-    .floating-note small { color: var(--muted); text-transform: uppercase; letter-spacing: .12em; font-size: .61rem; }
-    .floating-note strong { display: block; margin-top: 8px; line-height: 1.25; }
-
-    .ticker-wrap { border-block: 1px solid var(--line); overflow: hidden; background: rgba(255,255,255,.018); }
-    .ticker { display: flex; width: max-content; animation: marquee 24s linear infinite; }
-    .ticker-group { display: flex; align-items: center; gap: 34px; padding: 17px 17px; color: var(--muted); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
-    .ticker-group b { color: var(--green); font-size: .8rem; }
-    @keyframes marquee { to { transform: translateX(-50%); } }
-
-    .section { padding: clamp(90px, 12vw, 150px) 0; }
-    .section-head { display: grid; grid-template-columns: 1fr .55fr; gap: 50px; align-items: end; margin-bottom: 52px; }
-    .section h2 { font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: clamp(3rem, 6vw, 5.7rem); line-height: .96; letter-spacing: -.04em; font-weight: 400; margin-bottom: 0; }
-    .section-intro { color: var(--muted); line-height: 1.7; max-width: 510px; margin: 0; }
-
-    .project-list { display: grid; gap: 18px; }
-    .project-card {
-      position: relative; display: grid; grid-template-columns: 1fr .92fr; gap: 30px; min-height: 470px;
-      padding: clamp(26px, 4vw, 48px); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
-      background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
-      transition: transform .35s ease, border-color .35s ease, background .35s ease;
-      transform-style: preserve-3d;
-    }
-    .project-card:hover { border-color: rgba(156,255,191,.30); background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025)); }
-    .project-copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; }
-    .project-index { display: flex; align-items: center; justify-content: space-between; width: 100%; color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .15em; }
-    .project-status { padding: 8px 11px; border: 1px solid rgba(156,255,191,.22); border-radius: 99px; color: var(--green); background: rgba(156,255,191,.05); }
-    .project-kicker { margin-top: auto; color: var(--orange); text-transform: uppercase; letter-spacing: .13em; font-size: .69rem; font-weight: 700; }
-    .project-card h3 { margin-bottom: 15px; font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: clamp(2.6rem, 4vw, 4.6rem); font-weight: 400; line-height: .95; letter-spacing: -.035em; }
-    .project-copy > p:not(.project-kicker) { color: var(--muted); max-width: 530px; line-height: 1.65; }
-    .project-link { margin-top: 18px; display: inline-flex; gap: 9px; align-items: center; padding-bottom: 5px; border-bottom: 1px solid rgba(244,240,230,.24); font-weight: 700; font-size: .88rem; }
-    .project-link span { transition: transform .2s ease; }
-    .project-link:hover span { transform: translate(3px,-3px); }
-
-    .project-art { position: relative; display: grid; place-items: center; min-height: 340px; }
-    .dashboard-ui { width: min(100%, 430px); padding: 14px; border: 1px solid rgba(244,240,230,.18); border-radius: 23px; background: #101e1a; box-shadow: 0 30px 90px rgba(0,0,0,.3); transform: rotate(3deg); }
-    .ui-top { height: 32px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--line); }
-    .ui-top i { width: 7px; height: 7px; border-radius: 50%; background: rgba(244,240,230,.24); }
-    .metric-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 12px 0; }
-    .metric { padding: 12px; background: rgba(255,255,255,.045); border-radius: 12px; }
-    .metric span { display: block; width: 55%; height: 5px; background: rgba(244,240,230,.16); border-radius: 5px; }
-    .metric b { display: block; height: 13px; width: 72%; margin-top: 13px; background: var(--green); border-radius: 5px; opacity: .75; }
-    .chart { height: 185px; position: relative; border-radius: 14px; overflow: hidden; background: linear-gradient(to bottom, rgba(156,255,191,.04), transparent), repeating-linear-gradient(to bottom, transparent 0 36px, rgba(255,255,255,.055) 37px); }
-    .chart svg { position: absolute; inset: 14px 12px 12px; width: calc(100% - 24px); height: calc(100% - 26px); }
-
-    .travel-ui { width: min(100%, 390px); aspect-ratio: 4 / 5; position: relative; border-radius: 28px; overflow: hidden; border: 1px solid rgba(244,240,230,.18); background: #d9e5dc; box-shadow: 0 30px 90px rgba(0,0,0,.3); transform: rotate(-3deg); }
-    .travel-bg { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(circle at 72% 18%, rgba(255,240,178,.82) 0 7%, transparent 7.4%), linear-gradient(#9cc9c1 0 42%, #52796c 42% 61%, #173a31 61% 100%); }
-    .travel-bg::before { content: ""; position: absolute; left: -18%; right: -12%; bottom: 28%; height: 55%; background: #dce9df; clip-path: polygon(0 82%, 15% 67%, 28% 72%, 44% 30%, 54% 56%, 65% 16%, 83% 67%, 100% 48%, 100% 100%, 0 100%); filter: drop-shadow(0 10px 18px rgba(0,0,0,.12)); }
-    .travel-bg::after { content: ""; position: absolute; left: -10%; right: -10%; bottom: 0; height: 48%; background: repeating-linear-gradient(168deg, rgba(156,255,191,.15) 0 1px, transparent 1px 16px), linear-gradient(155deg, #224d40, #0d2d25); clip-path: polygon(0 38%, 14% 25%, 27% 42%, 41% 18%, 57% 46%, 74% 15%, 100% 36%, 100% 100%, 0 100%); }
-    .travel-content { position: absolute; inset: auto 22px 21px; z-index: 2; }
-    .travel-content small { color: var(--green); text-transform: uppercase; letter-spacing: .13em; }
-    .travel-content h4 { margin: 9px 0 7px; font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: 2.15rem; font-weight: 400; }
-    .travel-content p { color: rgba(244,240,230,.7); font-size: .82rem; margin: 0; }
-    .travel-badge { position: absolute; top: 18px; right: 18px; z-index: 2; padding: 9px 12px; border-radius: 99px; background: rgba(7,17,15,.66); backdrop-filter: blur(10px); font-size: .7rem; }
-
-    .about-grid { display: grid; grid-template-columns: .76fr 1.24fr; gap: clamp(40px, 8vw, 105px); align-items: start; }
-    .about-photo { position: sticky; top: 110px; border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid var(--line); background: linear-gradient(145deg, #163328, #091511); }
-    .about-photo.photo-missing::before { content: "Add your second photo"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--green); font-family: "Iowan Old Style", "Baskerville", Georgia, serif; font-size: clamp(2rem, 4vw, 4rem); text-align: center; padding: 30px; }
-    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .about-photo::after { content: "Utsav / Nepal"; position: absolute; left: 18px; bottom: 18px; padding: 8px 11px; border-radius: 99px; background: rgba(7,17,15,.68); backdrop-filter: blur(10px); font-size: .72rem; }
-    .about-copy h2 { max-width: 820px; }
-    .about-lede { margin: 31px 0 28px; font-size: clamp(1.35rem, 2.4vw, 2.15rem); line-height: 1.35; color: rgba(244,240,230,.92); }
-    .about-body { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-    .about-body p { color: var(--muted); line-height: 1.75; }
-    .facts { margin-top: 35px; display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-    .fact { padding: 18px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.025); }
-    .fact strong { display: block; font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-weight: 400; font-size: 1.65rem; color: var(--green); }
-    .fact span { color: var(--muted); font-size: .78rem; }
-
-    .thinking-card { padding: clamp(30px, 5vw, 60px); border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(125deg, rgba(156,255,191,.08), rgba(255,255,255,.02) 45%, rgba(255,178,112,.06)); }
-    .thinking-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 50px; align-items: start; }
-    .thinking-card h2 { font-size: clamp(2.8rem, 5vw, 5rem); }
-    .questions { display: grid; gap: 0; border-top: 1px solid var(--line); }
-    .question { display: grid; grid-template-columns: 42px 1fr; gap: 17px; padding: 20px 0; border-bottom: 1px solid var(--line); color: rgba(244,240,230,.9); }
-    .question span { color: var(--green); font-size: .72rem; padding-top: 4px; }
-
-    .contact { text-align: center; padding-bottom: 80px; }
-    .contact h2 { max-width: 850px; margin-inline: auto; }
-    .contact p { color: var(--muted); margin: 24px auto 32px; max-width: 560px; line-height: 1.7; }
-    .contact .button { min-width: 180px; }
-
-    .site-footer { padding: 25px 0 38px; }
-    .footer-shell { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-top: 25px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
-    .footer-links a:hover { color: var(--ink); }
-
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    @media (max-width: 900px) {
-      .hero-grid, .section-head, .project-card, .about-grid, .thinking-grid { grid-template-columns: 1fr; }
-      .hero { padding-top: 125px; }
-      .hero h1 { font-size: clamp(4rem, 17vw, 7rem); }
-      .hero-side { width: min(100%, 430px); margin-inline: auto; }
-      .portrait-shell { margin: 0; }
-      .floating-note { left: -15px; }
-      .project-card { min-height: 0; }
-      .project-kicker { margin-top: 55px; }
-      .project-art { order: -1; }
-      .about-photo { position: relative; top: auto; width: min(100%, 430px); }
-      .section-head { align-items: start; }
-      .section-intro { max-width: 650px; }
-    }
-
-    @media (max-width: 690px) {
-      .container { width: min(calc(100% - 24px), var(--max)); }
-      .site-header { padding: 10px 0; }
-      .nav-shell { background: rgba(7,17,15,.72); border-color: var(--line); backdrop-filter: blur(18px); }
-      .nav-toggle { width: 42px; height: 42px; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgba(255,255,255,.07); color: var(--ink); }
-      .nav-toggle::before { content: "☰"; font-size: 1.05rem; }
-      .nav-toggle[aria-expanded="true"]::before { content: "×"; font-size: 1.5rem; }
-      .site-nav { display: none; position: absolute; left: 12px; right: 12px; top: 74px; padding: 10px; flex-direction: column; align-items: stretch; background: #0b1a16; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); }
-      .site-nav.open { display: flex; }
-      .site-nav a { text-align: center; }
-      .hero { min-height: auto; }
-      .hero h1 { font-size: clamp(3.8rem, 20vw, 5.5rem); }
-      .hero-actions .button { width: 100%; }
-      .floating-note { top: 8%; left: -7px; width: 150px; }
-      .project-card { padding: 20px; }
-      .project-art { min-height: 285px; }
-      .metric-row { grid-template-columns: 1fr 1fr 1fr; }
-      .about-body, .facts { grid-template-columns: 1fr; }
-      .about-body { gap: 0; }
-      .footer-shell { align-items: flex-start; flex-direction: column; }
-      .footer-links { gap: 13px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
-  </style>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" id="header">
-    <div class="container nav-shell">
-      <a class="brand" href="#top" aria-label="Utsav Phuyal home">
-        <span class="brand-symbol">U</span>
-        <span>Utsav Phuyal</span>
-      </a>
-
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="sr-only">Toggle navigation</span>
-      </button>
-
-      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#thinking">Thinking</a>
-        <a class="nav-cta" href="#contact">Say hello ↗</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow"><span class="pulse"></span> Economics × Data × Digital Products</p>
-          <h1>I study markets.<br>I build <em>useful things.</em></h1>
-          <p class="hero-lede">I’m Utsav—an economics and business researcher from Nepal, turning public data, local insight and practical ideas into digital products people can actually use.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#work">See what I’m building <span>↓</span></a>
-            <a class="button button-secondary" href="#about">A little about me</a>
-          </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="google-site-verification"
+      content="09XQ8mhqLUNXN8VgpmZNmr68sA7B6ZgJbwtA_YEkqCw"
+    />
+    <title>Utsav Phuyal — Economics, Data & Digital Products</title>
+    <meta
+      name="description"
+      content="I'm Utsav Phuyal, an economics and business researcher from Nepal. Explore TradePulse Nepal and the digital products I'm building from research, data and local insight."
+    />
+    <link rel="canonical" href="https://utsavphuyal.com.np/" />
+    <meta name="theme-color" content="#f6f5f0" />
+    <meta
+      property="og:title"
+      content="Utsav Phuyal — Making sense. Making things."
+    />
+    <meta
+      property="og:description"
+      content="Economics, data and useful digital products. Independent work, built from Nepal."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://utsavphuyal.com.np/" />
+    <meta
+      property="og:image"
+      content="https://utsavphuyal.com.np/preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Utsav Phuyal — Making sense. Making things."
+    />
+    <meta
+      name="twitter:description"
+      content="Economics, data and useful digital products. Built from Nepal."
+    />
+    <meta
+      name="twitter:image"
+      content="https://utsavphuyal.com.np/preview.png"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="assets/fonts/dm-sans-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/dm-serif-display-400-italic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Utsav Phuyal",
+        "url": "https://utsavphuyal.com.np/",
+        "image": "https://utsavphuyal.com.np/assets/utsav-portrait.webp",
+        "jobTitle": "Economics and business researcher",
+        "sameAs": ["https://github.com/utsavhatescoding"],
+        "knowsAbout": [
+          "Economics",
+          "Economic research",
+          "Public data",
+          "Digital products"
+        ]
+      }
+    </script>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#top" aria-label="Utsav Phuyal, home"
+          ><span class="brand-mark" aria-hidden="true">u<span>.</span></span
+          ><span
+            >Utsav Phuyal<span class="brand-sub"
+              >Independent researcher & builder</span
+            ></span
+          ></a
+        >
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <span class="menu-label">Menu</span
+          ><span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <a href="#work">Selected work</a><a href="#about">A little about me</a
+          ><a href="#notes">Field notes</a
+          ><a class="nav-contact" href="#contact"
+            >Let’s talk <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+      </div>
+      <div class="scroll-progress" aria-hidden="true"></div>
+    </header>
+    <main id="main">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-top">
+          <p class="eyebrow">
+            <span class="tiny-cross" aria-hidden="true">✳</span> Economics, data
+            & digital products
+          </p>
+          <span class="edition mono">Personal portfolio / 2026</span>
         </div>
-
-        <div class="hero-side reveal">
-          <div class="floating-note">
-            <small>Current mode</small>
-            <strong>Researching.<br>Building.<br>Publishing.</strong>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 id="hero-title">Making sense.<br />Making <em>things.</em></h1>
+            <p class="hero-description">
+              I study how markets work, find the story in the data, and build
+              products that make it useful.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-blue" href="#work"
+                >Explore my work <span aria-hidden="true">↘</span></a
+              ><a class="quiet-link" href="#about"
+                >Meet the person behind it <span aria-hidden="true">→</span></a
+              >
+            </div>
+            <div class="hello">
+              <img
+                src="assets/utsav-portrait.webp"
+                width="56"
+                height="56"
+                alt="Utsav Phuyal"
+              />
+              <p>
+                <strong>Hi, I’m Utsav.</strong
+                ><span>A curious mind, building from Nepal.</span>
+              </p>
+              <span class="hello-line" aria-hidden="true"></span>
+            </div>
           </div>
-          <figure class="portrait-shell">
-            <!-- Replace "utsav.jpg" with your actual photo file name. -->
-            <img src="utsav.jpg" alt="Portrait of Utsav Phuyal" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-            <div class="portrait-fallback" aria-hidden="true">U</div>
-            <figcaption class="portrait-caption">
-              <div>
-                <strong>Utsav Phuyal</strong>
-                <span>Based in Kathmandu, Nepal</span>
-              </div>
-              <span class="location-orb" aria-hidden="true">⌁</span>
+          <figure class="signal-lab" aria-labelledby="signal-title">
+            <div class="lab-top mono">
+              <span id="signal-title">A sketch of how I work</span
+              ><span aria-hidden="true">FIG. 01</span>
+            </div>
+            <div class="signal-stage" data-mode="research" aria-hidden="true">
+              <svg class="signal-svg" viewBox="0 0 440 400" fill="none">
+                <defs>
+                  <pattern
+                    id="dots"
+                    width="20"
+                    height="20"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <circle
+                      cx="1"
+                      cy="1"
+                      r="1"
+                      fill="currentColor"
+                      opacity=".18"
+                    />
+                  </pattern>
+                  <linearGradient
+                    id="signal-fill"
+                    x1="220"
+                    y1="120"
+                    x2="220"
+                    y2="320"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#2549ec" stop-opacity=".14" />
+                    <stop offset="1" stop-color="#2549ec" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <rect width="440" height="400" fill="url(#dots)" />
+                <g class="lab-orbits">
+                  <circle
+                    cx="220"
+                    cy="200"
+                    r="155"
+                    stroke="currentColor"
+                    opacity=".12"
+                  />
+                  <circle
+                    cx="220"
+                    cy="200"
+                    r="115"
+                    stroke="currentColor"
+                    opacity=".16"
+                    stroke-dasharray="3 7"
+                  />
+                  <ellipse
+                    cx="220"
+                    cy="200"
+                    rx="177"
+                    ry="73"
+                    transform="rotate(-35 220 200)"
+                    stroke="#2549ec"
+                    stroke-opacity=".4"
+                  />
+                  <path
+                    d="M220 29V47M220 353V371M49 200H67M373 200H391"
+                    stroke="currentColor"
+                    opacity=".3"
+                  />
+                </g>
+                <g class="research-drawing">
+                  <path
+                    d="M80 259L128 232L174 250L222 178L268 198L317 125L360 144V318H80Z"
+                    fill="url(#signal-fill)"
+                  />
+                  <path
+                    class="signal-path"
+                    d="M80 259L128 232L174 250L222 178L268 198L317 125L360 144"
+                    stroke="#2549ec"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <g fill="#2549ec">
+                    <circle cx="128" cy="232" r="5" />
+                    <circle cx="222" cy="178" r="5" />
+                    <circle cx="317" cy="125" r="7" />
+                  </g>
+                  <circle
+                    cx="317"
+                    cy="125"
+                    r="17"
+                    stroke="#2549ec"
+                    stroke-opacity=".25"
+                  />
+                  <path
+                    d="M317 107V67H358"
+                    stroke="#2549ec"
+                    stroke-opacity=".6"
+                  />
+                  <text
+                    x="363"
+                    y="71"
+                    fill="#2549ec"
+                    font-size="10"
+                    font-family="monospace"
+                  >
+                    INSIGHT
+                  </text>
+                </g>
+                <g class="build-drawing">
+                  <rect
+                    x="105"
+                    y="103"
+                    width="230"
+                    height="188"
+                    rx="10"
+                    fill="#f6f5f0"
+                    stroke="#2549ec"
+                    stroke-width="2"
+                  />
+                  <path d="M105 138H335" stroke="#2549ec" />
+                  <circle cx="122" cy="121" r="3" fill="#2549ec" />
+                  <circle cx="134" cy="121" r="3" fill="#2549ec" />
+                  <circle cx="146" cy="121" r="3" fill="#2549ec" />
+                  <rect
+                    x="121"
+                    y="156"
+                    width="72"
+                    height="117"
+                    rx="4"
+                    fill="#2549ec"
+                    fill-opacity=".1"
+                  />
+                  <path
+                    d="M208 166H316M208 183H273M208 264L233 231L261 244L300 205L317 216"
+                    stroke="#2549ec"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="208"
+                    y="198"
+                    width="109"
+                    height="75"
+                    rx="4"
+                    fill="#2549ec"
+                    fill-opacity=".06"
+                  />
+                  <path
+                    d="M145 207L135 216L145 225M169 207L179 216L169 225M161 202L152 230"
+                    stroke="#2549ec"
+                    stroke-width="2"
+                  />
+                </g>
+                <g class="share-drawing">
+                  <path
+                    d="M220 200L116 117M220 200L334 124M220 200L329 280M220 200L118 280"
+                    stroke="#2549ec"
+                    stroke-width="2"
+                  />
+                  <circle cx="220" cy="200" r="43" fill="#2549ec" />
+                  <path
+                    d="M207 200H234M225 191L234 200L225 209"
+                    stroke="white"
+                    stroke-width="2"
+                  />
+                  <g fill="#f6f5f0" stroke="#2549ec" stroke-width="2">
+                    <circle cx="116" cy="117" r="22" />
+                    <circle cx="334" cy="124" r="22" />
+                    <circle cx="329" cy="280" r="22" />
+                    <circle cx="118" cy="280" r="22" />
+                  </g>
+                  <g fill="#2549ec">
+                    <circle cx="116" cy="117" r="5" />
+                    <circle cx="334" cy="124" r="5" />
+                    <circle cx="329" cy="280" r="5" />
+                    <circle cx="118" cy="280" r="5" />
+                  </g>
+                </g>
+                <circle
+                  class="orbit-point"
+                  cx="90"
+                  cy="113"
+                  r="9"
+                  fill="#d9ec55"
+                  stroke="#242622"
+                />
+                <circle cx="351" cy="284" r="5" fill="#2549ec" />
+                <text
+                  x="13"
+                  y="385"
+                  fill="currentColor"
+                  opacity=".5"
+                  font-size="9"
+                  font-family="monospace"
+                >
+                  CURIOSITY → SOMETHING USEFUL
+                </text>
+              </svg>
+              <span class="signal-coordinate mono"
+                >27.7172° N<br />85.3240° E</span
+              >
+            </div>
+            <div
+              class="lab-controls"
+              role="group"
+              aria-label="Explore my process"
+            >
+              <button type="button" data-mode="research" aria-pressed="true">
+                <span>01</span> Research</button
+              ><button type="button" data-mode="build" aria-pressed="false">
+                <span>02</span> Build</button
+              ><button type="button" data-mode="share" aria-pressed="false">
+                <span>03</span> Share
+              </button>
+            </div>
+            <figcaption class="lab-caption" aria-live="polite">
+              Find the signal. Ask a better question.
             </figcaption>
           </figure>
         </div>
-      </div>
-    </section>
-
-    <div class="ticker-wrap" aria-hidden="true">
-      <div class="ticker">
-        <div class="ticker-group"><b>●</b><span>Trade intelligence</span><span>Economic research</span><span>Public data</span><span>AI tools</span><span>Nepal</span><span>Travel discovery</span></div>
-        <div class="ticker-group"><b>●</b><span>Trade intelligence</span><span>Economic research</span><span>Public data</span><span>AI tools</span><span>Nepal</span><span>Travel discovery</span></div>
-      </div>
-    </div>
-
-    <section class="section" id="work">
-      <div class="container">
-        <div class="section-head reveal">
+        <div class="hero-bottom mono">
+          <span
+            ><i class="status-dot" aria-hidden="true"></i> Based in Kathmandu,
+            Nepal
+            <span
+              class="nepal-time"
+              aria-label="Current time in Nepal"
+            ></span></span
+          ><a href="#work"
+            >A few things I’ve put into the world
+            <span aria-hidden="true">↓</span></a
+          >
+        </div>
+      </section>
+      <section
+        class="work section container"
+        id="work"
+        aria-labelledby="work-title"
+      >
+        <div class="section-head">
           <div>
-            <p class="eyebrow">Selected work</p>
-            <h2>Ideas made tangible.</h2>
+            <p class="eyebrow">01 / Selected work</p>
+            <h2 id="work-title">Ideas that<br /><em>leave the page.</em></h2>
           </div>
-          <p class="section-intro">I like products that begin with a clear question, reduce friction and make difficult information feel simple.</p>
+          <p>
+            Independent projects at the intersection of research, local
+            knowledge and useful technology.
+          </p>
         </div>
-
-        <div class="project-list">
-          <article class="project-card reveal tilt-card">
-            <div class="project-copy">
-              <div class="project-index"><span>Project / 01</span><span class="project-status">Live</span></div>
-              <p class="project-kicker">Economic data · AI-assisted analysis</p>
-              <h3>TradePulse Nepal</h3>
-              <p>A free market-intelligence platform that transforms Nepal’s customs data into clear trends, opportunity signals and practical answers.</p>
-              <a class="project-link" href="https://tradepulsenepal.streamlit.app" target="_blank" rel="noopener noreferrer">Explore TradePulse <span>↗</span></a>
+        <article class="featured-project" aria-labelledby="trade-title">
+          <div class="project-copy">
+            <div class="project-topline mono">
+              <span>01 / Featured project</span
+              ><span class="project-status"
+                ><i aria-hidden="true"></i> Live</span
+              >
             </div>
-            <div class="project-art" aria-hidden="true">
-              <div class="dashboard-ui">
-                <div class="ui-top"><i></i><i></i><i></i></div>
-                <div class="metric-row">
-                  <div class="metric"><span></span><b></b></div>
-                  <div class="metric"><span></span><b style="width:56%;opacity:.45"></b></div>
-                  <div class="metric"><span></span><b style="width:84%;opacity:.62"></b></div>
-                </div>
-                <div class="chart">
-                  <svg viewBox="0 0 500 200" preserveAspectRatio="none">
-                    <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9cffbf" stop-opacity=".35"/><stop offset="1" stop-color="#9cffbf" stop-opacity="0"/></linearGradient></defs>
-                    <path d="M0 155 C55 145,70 82,120 108 S210 142,260 75 S330 95,380 54 S450 68,500 28 L500 200 L0 200 Z" fill="url(#area)"/>
-                    <path d="M0 155 C55 145,70 82,120 108 S210 142,260 75 S330 95,380 54 S450 68,500 28" fill="none" stroke="#9cffbf" stroke-width="4" stroke-linecap="round"/>
-                  </svg>
-                </div>
-              </div>
+            <div class="trade-logo" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none">
+                <path
+                  d="M5 27L14 19L22 23L34 9M25 9H34V18"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
             </div>
-          </article>
-
-          <article class="project-card reveal tilt-card">
-            <div class="project-copy">
-              <div class="project-index"><span>Project / 02</span><span class="project-status">Building</span></div>
-              <p class="project-kicker">Travel · Community · Local knowledge</p>
-              <h3>SANGAI </h3>
-              <p>A cost-ride sharing platform for Nepal.</p>
-              <a class="project-link" href="https://sangaijaum.netlify.app" target="_blank" rel="noopener noreferrer">Visit Sangai <span>↗</span></a>
+            <p class="project-category mono">Economics → public intelligence</p>
+            <h3 id="trade-title">TradePulse<span>Nepal</span></h3>
+            <p class="project-description">
+              Nepal’s trade data has a story to tell.<br />I’m making it easier
+              to read.
+            </p>
+            <p class="project-body">
+              A public platform that turns customs releases into clear insights
+              on imports, exports, products and trading partners.
+            </p>
+            <div class="project-tags">
+              <span>Public data</span><span>Market research</span
+              ><span>Digital product</span>
             </div>
-            <div class="project-art">
-              <div class="travel-ui" aria-label="Travel interface preview">
-                <div class="travel-bg"></div>
-                <span class="travel-badge">Nepal · 27.7° N</span>
-                <div class="travel-content">
-                  <small>Field note / 014</small>
-                  <h4>Find the Nepal people actually know.</h4>
-                  <p>Stories, places and recommendations from real journeys.</p>
-                </div>
-              </div>
+            <div class="project-actions">
+              <a
+                class="button button-white"
+                href="https://tradepulsenepal.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Visit website <span aria-hidden="true">↗</span></a
+              ><a
+                class="project-text-link"
+                href="https://app.tradepulsenepal.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open dashboard <span aria-hidden="true">↗</span></a
+              >
             </div>
-          </article>
-          <article class="project-card reveal tilt-card">
-            <div class="project-copy">
-              <div class="project-index"><span>Project / 03</span><span class="project-status">Prototype</span></div>
-              <p class="project-kicker"> Tourism</p>
-              <h3>GuideConnect</h3>
-              <p>A platform that connects travellers with local experts / tour guides . </p>
-              <a class="project-link" href="https://guidematch-nepal.netlify.app" target="_blank" rel="noopener noreferrer">Explore GuideConnect <span>↗</span></a>
-            </div>
-            <div class="project-art" aria-hidden="true">
-              <div class="dashboard-ui">
-                <div class="ui-top"><i></i><i></i><i></i></div>
-                <div class="metric-row">
-                  <div class="metric"><span></span><b></b></div>
-                  <div class="metric"><span></span><b style="width:56%;opacity:.45"></b></div>
-                  <div class="metric"><span></span><b style="width:84%;opacity:.62"></b></div>
-                </div>
-                <div class="chart">
-                  <svg viewBox="0 0 500 200" preserveAspectRatio="none">
-                    <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9cffbf" stop-opacity=".35"/><stop offset="1" stop-color="#9cffbf" stop-opacity="0"/></linearGradient></defs>
-                    <path d="M0 155 C55 145,70 82,120 108 S210 142,260 75 S330 95,380 54 S450 68,500 28 L500 200 L0 200 Z" fill="url(#area)"/>
-                    <path d="M0 155 C55 145,70 82,120 108 S210 142,260 75 S330 95,380 54 S450 68,500 28" fill="none" stroke="#9cffbf" stroke-width="4" stroke-linecap="round"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container about-grid">
-        <figure class="about-photo reveal">
-          <!-- Use a second photo here, or keep the same image. -->
-          <img src="utsav-about.jpg" alt="Utsav Phuyal working on research and digital products" onerror="this.style.display='none'; this.parentElement.classList.add('photo-missing');" />
-        </figure>
-
-        <div class="about-copy reveal">
-          <p class="eyebrow">About me</p>
-          <h2>Curious about why things work—and how they could work better.</h2>
-          <p class="about-lede">My background is in economics and business. My work sits where research, data, storytelling and product-building meet.</p>
-          <div class="about-body">
-            <p>I enjoy taking complex subjects—trade data, market shifts, policy questions or travel information—and making them easier to understand and use.</p>
-            <p>I’m especially interested in building useful digital tools from Nepal: products that are locally grounded, publicly valuable and simple enough to be used without a manual.</p>
           </div>
-          <div class="facts" aria-label="Quick facts">
-            <div class="fact"><strong>2</strong><span>live digital products</span></div>
-            <div class="fact"><strong>Nepal</strong><span>home and starting point</span></div>
-            <div class="fact"><strong>∞</strong><span>questions worth exploring</span></div>
+          <div class="trade-preview">
+            <div
+              class="preview-tabs"
+              role="group"
+              aria-label="Choose a TradePulse preview"
+            >
+              <button type="button" data-preview="website" aria-pressed="true">
+                The website</button
+              ><button
+                type="button"
+                data-preview="dashboard"
+                aria-pressed="false"
+              >
+                The dashboard</button
+              ><span class="mono" aria-hidden="true">↗ LIVE PRODUCT</span>
+            </div>
+            <a
+              class="browser-frame"
+              href="https://tradepulsenepal.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="preview-link"
+              aria-label="Visit the TradePulse Nepal website"
+              ><div class="browser-chrome" aria-hidden="true">
+                <span class="browser-dots"><i></i><i></i><i></i></span
+                ><span class="browser-url mono" id="preview-url"
+                  >tradepulsenepal.com</span
+                ><span>↗</span>
+              </div>
+              <div class="screen-crop">
+                <img
+                  id="trade-screen"
+                  src="assets/tradepulse-website.webp"
+                  width="1440"
+                  height="1050"
+                  alt="TradePulse Nepal website showing Nepal import and export data"
+                  loading="lazy"
+                /></div
+            ></a>
+            <div class="preview-caption mono">
+              <span>From raw releases to a clearer picture.</span
+              ><span>Built from Nepal ↗</span>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="thinking">
-      <div class="container">
-        <div class="thinking-card reveal">
-          <div class="thinking-grid">
+        </article>
+        <details class="project-story">
+          <summary>
+            <span>Behind TradePulse</span
+            ><span class="mono"
+              >The question, the approach, the product
+              <span class="details-plus" aria-hidden="true">+</span></span
+            >
+          </summary>
+          <div class="story-grid">
             <div>
-              <p class="eyebrow">What I’m thinking about</p>
-              <h2>Questions before features.</h2>
+              <span class="eyebrow">The question</span>
+              <h4>What if public data were easier to use?</h4>
+              <p>
+                Customs releases contain valuable information. Finding the
+                relevant product, country or monthly change should not require
+                working through an entire workbook.
+              </p>
             </div>
-            <div class="questions">
-              <div class="question"><span>01</span><div>How can public economic data become genuinely useful to ordinary people and businesses?</div></div>
-              <div class="question"><span>02</span><div>What would a travel platform look like if local knowledge—not advertising—shaped discovery?</div></div>
-              <div class="question"><span>03</span><div>How can small, independent products from Nepal reach a global standard without becoming generic?</div></div>
+            <div>
+              <span class="eyebrow">The approach</span>
+              <h4>Make the information legible.</h4>
+              <p>
+                Bring the data, visual exploration and written analysis
+                together, so people can move from a headline to the detail
+                behind it.
+              </p>
+            </div>
+            <div>
+              <span class="eyebrow">The product</span>
+              <h4>Two ways to explore.</h4>
+              <p>
+                A website for reports and data downloads, plus a dedicated
+                dashboard for exploring Nepal’s foreign trade.
+              </p>
+              <a
+                class="text-link"
+                href="https://tradepulsenepal.com/bhadra-2083-84-trade-report.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Read a trade report <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+        </details>
+        <div class="secondary-projects">
+          <article class="small-project sangai" aria-labelledby="sangai-title">
+            <a
+              class="project-art route-art"
+              href="https://sangaijaum.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Explore the SANGAI demo"
+              ><div class="art-top mono">
+                <span>SANGAI / सँगै</span><span>Shared journeys ↗</span>
+              </div>
+              <svg viewBox="0 0 550 280" fill="none" aria-hidden="true">
+                <path
+                  d="M-20 223L56 183L99 208L153 116L185 144L240 60L292 141L328 112L382 190L447 159L495 211L570 165"
+                  stroke="#304932"
+                  stroke-opacity=".14"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M-20 262L49 237L115 245L170 202L226 218L290 172L350 195L409 222L468 210L565 252"
+                  stroke="#304932"
+                  stroke-opacity=".13"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M119 184C179 197 170 98 255 128S346 205 428 115"
+                  stroke="#304932"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-dasharray="6 9"
+                />
+                <circle cx="119" cy="184" r="9" fill="#304932" />
+                <circle
+                  cx="119"
+                  cy="184"
+                  r="19"
+                  stroke="#304932"
+                  stroke-opacity=".2"
+                />
+                <circle cx="428" cy="115" r="9" fill="#304932" />
+                <circle
+                  cx="428"
+                  cy="115"
+                  r="19"
+                  stroke="#304932"
+                  stroke-opacity=".2"
+                />
+                <g transform="translate(260 119) rotate(12)">
+                  <rect
+                    x="-32"
+                    y="-25"
+                    width="64"
+                    height="50"
+                    rx="14"
+                    fill="#f6f5f0"
+                    stroke="#304932"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M-16 6H16L12-9H-12L-16 6ZM-16 6V14M16 6V14M-16 10H16"
+                    stroke="#304932"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="-10" cy="6" r="2" fill="#304932" />
+                  <circle cx="10" cy="6" r="2" fill="#304932" />
+                </g>
+              </svg>
+              <div class="art-bottom">
+                <span>Better journeys.<br /><em>Together.</em></span
+                ><span class="round-arrow" aria-hidden="true">↗</span>
+              </div></a
+            >
+            <div class="small-project-copy">
+              <div class="project-topline mono">
+                <span>02 / Mobility & community</span
+                ><span>In development</span>
+              </div>
+              <h3 id="sangai-title">
+                <a
+                  href="https://sangaijaum.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >SANGAI <span aria-hidden="true">↗</span></a
+                >
+              </h3>
+              <p>
+                A cost-sharing ride platform for Nepal. An idea for making the
+                journey more accessible, one shared ride at a time.
+              </p>
+              <a
+                class="text-link"
+                href="https://sangaijaum.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Explore the demo <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+          <article class="small-project guide" aria-labelledby="guide-title">
+            <a
+              class="project-art guide-art"
+              href="https://guidematch-nepal.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Explore the GuideConnect prototype"
+              ><div class="art-top mono">
+                <span>GUIDECONNECT</span><span>Local knowledge ↗</span>
+              </div>
+              <svg viewBox="0 0 550 280" fill="none" aria-hidden="true">
+                <circle cx="388" cy="66" r="29" fill="#eeb793" />
+                <path
+                  d="M0 228L94 153L155 201L267 57L374 178L427 128L550 222V280H0Z"
+                  fill="#a96849"
+                  fill-opacity=".15"
+                />
+                <path
+                  d="M81 280L202 152L255 210L339 112L499 280"
+                  fill="#a96849"
+                  fill-opacity=".18"
+                />
+                <path
+                  d="M210 130L267 57L319 120L282 102L264 117L245 100Z"
+                  fill="#f6f5f0"
+                />
+                <path
+                  d="M267 57L374 178L427 128L550 222M0 228L94 153L155 201L267 57"
+                  stroke="#9c6446"
+                  stroke-opacity=".6"
+                />
+                <path
+                  d="M70 270C160 191 216 286 291 202S369 132 446 161"
+                  stroke="#9c6446"
+                  stroke-width="2"
+                  stroke-dasharray="3 7"
+                />
+                <path
+                  d="M334 153C334 153 350 137 350 126C350 117 343 111 334 111C325 111 318 117 318 126C318 137 334 153 334 153Z"
+                  fill="#f6f5f0"
+                  stroke="#9c6446"
+                  stroke-width="2"
+                />
+                <circle cx="334" cy="126" r="5" fill="#9c6446" />
+              </svg>
+              <div class="art-bottom">
+                <span>A place is better<br /><em>with a local.</em></span
+                ><span class="round-arrow" aria-hidden="true">↗</span>
+              </div></a
+            >
+            <div class="small-project-copy">
+              <div class="project-topline mono">
+                <span>03 / Travel & discovery</span><span>Prototype</span>
+              </div>
+              <h3 id="guide-title">
+                <a
+                  href="https://guidematch-nepal.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GuideConnect <span aria-hidden="true">↗</span></a
+                >
+              </h3>
+              <p>
+                Connecting travellers with local experts and tour guides. Built
+                around the people who know a place best.
+              </p>
+              <a
+                class="text-link"
+                href="https://guidematch-nepal.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Explore the prototype <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="about section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-copy">
+              <p class="eyebrow">02 / The person behind the projects</p>
+              <h2 id="about-title">
+                Economics is the lens.<br />Building is<br />the
+                <em>practice.</em>
+              </h2>
+              <p class="about-lede">
+                I’m Utsav, an economics and business researcher with a habit of
+                turning questions into projects.
+              </p>
+              <p>
+                I’m interested in what happens when research leaves the page: a
+                dataset becomes a useful tool, a market shift becomes a clear
+                story, or local knowledge becomes a better way to travel.
+              </p>
+              <p>
+                Nepal is my starting point. I want to build things that
+                understand the local context and are thoughtful enough to stand
+                on their own anywhere.
+              </p>
+              <a class="quiet-link" href="mailto:utsavkphuyal@gmail.com"
+                >Always up for a good conversation
+                <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <figure class="about-portrait">
+              <div class="photo-mat">
+                <img
+                  src="assets/utsav-portrait.webp"
+                  width="800"
+                  height="1067"
+                  alt="Portrait of Utsav Phuyal"
+                  loading="lazy"
+                /><span class="portrait-sticker mono"
+                  >Curiosity<br />is the point.
+                  <span aria-hidden="true">✳</span></span
+                >
+              </div>
+              <figcaption class="mono">
+                <span>Utsav Phuyal</span><span>Kathmandu, Nepal / ↗</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="approach">
+            <div class="approach-heading">
+              <span class="eyebrow">My working philosophy</span
+              ><span class="mono">A simple process. A lot of questions.</span>
+            </div>
+            <div class="approach-grid">
+              <article>
+                <span class="step-number">01</span>
+                <h3>Start with a question.</h3>
+                <p>
+                  Understand the people, the context and the information before
+                  deciding what to build.
+                </p>
+              </article>
+              <article>
+                <span class="step-number">02</span>
+                <h3>Make the complex clear.</h3>
+                <p>
+                  Find the useful signal. Give it a form that someone can
+                  understand and act on.
+                </p>
+              </article>
+              <article>
+                <span class="step-number">03</span>
+                <h3>Put it into the world.</h3>
+                <p>
+                  Build something people can try. Keep learning from how they
+                  actually use it.
+                </p>
+              </article>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div class="container reveal">
-        <p class="eyebrow">Contact</p>
-        <h2>Have an interesting problem, idea or collaboration?</h2>
-        <p>I’m always interested in thoughtful conversations around economics, data, research, technology and useful products.</p>
-        <a class="button button-primary" href="mailto:utsavkphuyal@gmail.com">Start a conversation ↗</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-shell">
-      <span>© <span id="year"></span> Utsav Phuyal · Built from Nepal</span>
-      <div class="footer-links">
-        <a href="https://tradepulsenepal.streamlit.app" target="_blank" rel="noopener noreferrer">TradePulse</a>
-        <a href="https://sangaijaum.netlify.app" target="_blank" rel="noopener noreferrer">SANGAI</a>
-         <a href="https://guidematch-nepal.netlify.app" target="_blank" rel="noopener noreferrer">GuideConnect</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const header = document.getElementById('header');
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('site-nav');
-
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 30);
-    }, { passive: true });
-
-    navToggle.addEventListener('click', () => {
-      const open = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!open));
-      nav.classList.toggle('open', !open);
-    });
-
-    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    }));
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: .12 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    if (window.matchMedia('(pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.tilt-card').forEach(card => {
-        card.addEventListener('mousemove', (event) => {
-          const rect = card.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - .5;
-          const y = (event.clientY - rect.top) / rect.height - .5;
-          card.style.transform = `perspective(1200px) rotateX(${y * -2.2}deg) rotateY(${x * 2.2}deg) translateY(-3px)`;
-        });
-        card.addEventListener('mouseleave', () => card.style.transform = '');
-      });
-    }
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+      </section>
+      <section
+        class="notes section container"
+        id="notes"
+        aria-labelledby="notes-title"
+      >
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">03 / Field notes</p>
+            <h2 id="notes-title">
+              Still asking<br /><em>better questions.</em>
+            </h2>
+          </div>
+          <p>A published report, and a few ideas I keep coming back to.</p>
+        </div>
+        <div class="notes-grid">
+          <a
+            class="report-note"
+            href="https://tradepulsenepal.com/bhadra-2083-84-trade-report.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><div class="note-top mono">
+              <span>TradePulse / Published analysis</span
+              ><span aria-hidden="true">↗</span>
+            </div>
+            <span class="note-symbol" aria-hidden="true">↗</span>
+            <div>
+              <p class="eyebrow">Bhadra · FY 2083/84</p>
+              <h3>Reading Nepal’s<br />trade, beyond<br />the headline.</h3>
+              <p>
+                Products, trading partners and the movement behind the monthly
+                numbers.
+              </p>
+              <span class="text-link"
+                >Read the report <span aria-hidden="true">↗</span></span
+              >
+            </div></a
+          >
+          <div class="open-questions">
+            <p class="mono questions-label">On my mind / open questions</p>
+            <details open>
+              <summary>
+                <span class="mono">01</span>
+                <h3>Who is public data really for?</h3>
+                <span class="details-plus" aria-hidden="true">+</span>
+              </summary>
+              <p>
+                I’m interested in the gap between publishing information and
+                making it useful. What would change if a small business could
+                explore economic data as easily as a researcher?
+              </p>
+            </details>
+            <details>
+              <summary>
+                <span class="mono">02</span>
+                <h3>What does local knowledge unlock?</h3>
+                <span class="details-plus" aria-hidden="true">+</span>
+              </summary>
+              <p>
+                A place is more than a list of attractions. I’m exploring how
+                digital products can help people discover it through the guides,
+                communities and everyday journeys that give it meaning.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <span class="mono">03</span>
+                <h3>Can small products have a big standard?</h3>
+                <span class="details-plus" aria-hidden="true">+</span>
+              </summary>
+              <p>
+                I think independent projects from Nepal deserve the same
+                attention to clarity, usefulness and craft as products built
+                anywhere else. That’s the standard I’m working towards.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="contact-top mono">
+            <span>04 / Start a conversation</span
+            ><span
+              >Ideas welcome <i class="status-dot" aria-hidden="true"></i
+            ></span>
+          </div>
+          <div class="contact-grid">
+            <h2 id="contact-title">Something<br />on your <em>mind?</em></h2>
+            <div class="contact-copy">
+              <p>
+                A research question, a product idea, or a problem worth figuring
+                out together. I’d love to hear it.
+              </p>
+              <a class="button button-lime" href="mailto:utsavkphuyal@gmail.com"
+                >Say hello <span aria-hidden="true">↗</span></a
+              >
+              <div class="email-line">
+                <a href="mailto:utsavkphuyal@gmail.com"
+                  >utsavkphuyal@gmail.com</a
+                ><button
+                  type="button"
+                  class="copy-email"
+                  aria-label="Copy email address"
+                >
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <rect
+                      x="7"
+                      y="7"
+                      width="9"
+                      height="10"
+                      rx="1"
+                      stroke="currentColor"
+                    />
+                    <path d="M12 5V3H3V13H5" stroke="currentColor" />
+                  </svg>
+                </button>
+              </div>
+              <p class="copy-status mono" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="footer-wordmark" aria-hidden="true">
+            utsav<span>✳</span>
+          </div>
+          <footer class="site-footer">
+            <span>© <span id="year">2026</span> Utsav Phuyal</span
+            ><span class="footer-origin"
+              >Thought through. Built from Nepal.</span
+            >
+            <div>
+              <a
+                href="https://github.com/utsavhatescoding"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub <span aria-hidden="true">↗</span></a
+              ><a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
